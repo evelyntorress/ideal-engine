@@ -1,56 +1,23 @@
 const router = require('express').Router();
 const {
   getUsers,
-  getSingleUsert,
+  getSingleUser,
   createUser,
+  updateUser,
   deleteUser,
   addFriend,
   deleteFriend,
-} = require('./c');
+ 
+} = require('../../controllers/user-controller');
 
-// /api/students
-router.route('/').get(getStudents).post(createStudent);
+// Get all users/Create user
+router.route('/').get(getUsers).post(createUser);
 
-// /api/students/:studentId
-router.route('/:studentId').get(getSingleStudent).delete(deleteStudent);
+// Get user by Id/put-update and delete
+router.route('/:getSingleUser').get(getSingleUser).put(updateUser).delete(deleteUser);
 
-// /api/students/:studentId/assignments
-router.route('/:studentId/assignments').post(addAssignment);
+// /api/users/:usersId/friend - Adding and deleting a friend
+router.route('/:userId/friends/:friendtId').post(addFriend).delete(deleteFriend);
 
-// /api/students/:studentId/assignments/:assignmentId
-router.route('/:studentId/assignments/:assignmentId').delete(removeAssignment);
 
 module.exports = router;
-
-
-
-
-
-
-// /api/users
-
-
-// GET all users
-
-
-// GET a single user by its _id and populated thought and friend data
-
-
-// POST a new user:
-
-
-
-// // example data
-// {
-//   "username": "lernantino",
-//   "email": "lernantino@gmail.com"
-// }
-
-
-// PUT to update a user by its _id
-
-
-// DELETE to remove user by its _id
-
-
-// BONUS: Remove a user's associated thoughts when deleted.
