@@ -1,8 +1,8 @@
-const { Schema, model } = require('mongoose');
-
+const { Schema, model, Types } = require('mongoose');
+const reactionSchema = require('./reaction-schema');
 
 // Schema to create thought model
-const ThoughtSchema = new Schema(
+const thoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
@@ -14,34 +14,9 @@ const ThoughtSchema = new Schema(
     createAt: {
      type: Date,
      default: Date.now,
-     get:  // I need to fill this part ========================================
-
-//      let schema = new mongoose.Schema(
-//       {
-//          name: String,
-//          dob: {
-//                  type: Date,
-//                  get: (date) => {
-//                    if (date) return date.toISOString().split("T") [0];
-//                  },
-//          },
- 
-//          createdAt: {
-//                  type: Date,
-//                  get: (date) => timeSince(date),
-//          }
-//          updatedAt: {
-//                  type: Date,
-//                  get: (date) => timeSince(date),
-//          },
-//       },
-//       {
-//         timestamps: true,
-//         toJSON: { getters: true, virtuals: true },
-//       }
-//  );
- 
+     get: date => date
     },
+    
     username: {
       type: String,
       required: true
@@ -63,40 +38,5 @@ const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;
 
-
-// Reaction schema
-const reactionSchema = new Schema(
-  
-    reactionId: {
-      type: Schema.ObjectId,
-      default: new.Types.ObjectId
-      },
-
-    reactionBody: {
-      type: String,
-      required: true,
-      max_length: 280
-      },
-
-      username: {
-        type: String,
-        required: true,
-      },
-
-      createAt: {
-        type: Date,
-        default: Date.now,
-        get:  
-// I need to fill this part
-      },
-
-        {
-          toJSON: {
-            virtuals: true
-        },
-        id: false,
-    }
-  );
-    
 
 
