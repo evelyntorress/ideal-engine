@@ -17,10 +17,10 @@ const { User, Thought } = require('../models');
   // Get a single user
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
-      .then((user) => res.json(user))
+      .then((user) => { res.json(user)
         if(!user) {
           res.status(404).json({ message: 'No user with that ID' })
-    }
+  }})
   },
   // Create a new user
   createUser(req, res) {
@@ -32,8 +32,8 @@ const { User, Thought } = require('../models');
   // Update a user
   updateUser(req, res) {
     User.findOneAndUpdate(
-      {_id: params.userId }, 
-      body, 
+      {_id: req.params.userId }, 
+      req.body, 
       { new: true, runValidators: true })
     .then(user => {
         if (!user) {
@@ -48,10 +48,11 @@ const { User, Thought } = require('../models');
   // Delete a user
   deleteUser(req, res) {
     User.findOneAndRemove({ _id: req.params.userId })
-      .then((user) => res.json(user))
+      .then((user) => {
+        res.json(user)
         if (!user)
-        res.status(404).json({ message: 'No user with this id' })
-     
+        res.status(404).json({ message: 'No user with this id' })}
+      )
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
