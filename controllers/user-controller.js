@@ -3,6 +3,10 @@ const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
 
+
+    module.exports = {
+
+
   // Get all users
   getUsers(req, res) {
     User.find()
@@ -16,8 +20,8 @@ const { User, Thought } = require('../models');
       .then((user) => res.json(user))
         if(!user) {
           res.status(404).json({ message: 'No user with that ID' })
+    }
   },
-},
   // Create a new user
   createUser(req, res) {
     User.create(req.body)
@@ -88,3 +92,4 @@ deleteFriend(req, res) {
       }})
     .catch((err) => res.status(500).json(err));
 },
+    };
