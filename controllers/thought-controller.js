@@ -37,11 +37,11 @@ module.exports = {
         { $set: req.body },
         { runValidators: true, new: true }
       )
-        .then((thoughts) =>
+        .then((thoughts) => {
           !thoughts
             ? res.status(404).json({ message: 'No thoughts with this id!' })
             : res.json(thoughts)
-        )
+    })
         .catch((err) => res.status(500).json(err));
     },
   
@@ -58,10 +58,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
 },
 
-
-
-// POST to create a reaction stored in a single thought's reactions array field
-  // Add reaction to a thought
+  // Add reaction
   addReaction(req, res) {
     console.log('You are adding a reaction');
     console.log(req.body);
@@ -70,13 +67,13 @@ module.exports = {
       { $addToSet: { reactions: req.body } },
       { runValidators: true, new: true }
     )
-      .then((user) =>
+      .then((user) => {
         !user
           ? res
               .status(404)
               .json({ message: 'No user found with that ID' })
           : res.json(user)
-      )
+  })
       .catch((err) => res.status(500).json(err));
   },
 
@@ -88,13 +85,13 @@ module.exports = {
       { $pull: { reaction: { rectionId: req.params.reactionId } } },
       { runValidators: true, new: true }
     )
-      .then((user) =>
+      .then((user) => {
         !user
           ? res
               .status(404)
               .json({ message: 'No user found with that ID' })
           : res.json(user)
-      )
+  })
       .catch((err) => res.status(500).json(err));
   },
 };

@@ -81,7 +81,7 @@ addFriend(req, res) {
 
 deleteFriend(req, res) {
   User.findOneAndUpdate(
-    { _id: req.params.friendId },
+    { _id: req.params.userId },
     { $pull: { friends: req.params.friendId } },
     { runValidators: true, new: true }
   )
