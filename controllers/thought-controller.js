@@ -78,7 +78,7 @@ module.exports = {
   },
 
 
-  // Delete reaction
+  // Delete reaction 
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
@@ -86,11 +86,12 @@ module.exports = {
       { runValidators: true, new: true }
     )
       .then((dbThoughtData) => {
-        !dbThoughtData
-          ? res
-              .status(404)
+        if(!dbThoughtData){
+         
+              return res.status(404)
               .json({ message: 'No user found with that ID' })
-          : res.json(dbThoughtData)
+        }
+          res.json(dbThoughtData)
   })
       .catch((err) => res.status(500).json(err));
   },
