@@ -50,13 +50,36 @@ module.exports = {
   deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then((thoughts) => {
-        !thoughts
-          ? res.status(404).json({ message: 'No thought with that ID' })
-          : thoughts.deleteMany({ _id: { $in: thoughts.user }})
+        if (!dbThoughtData) {
+          return res.status(404).json({ message: 'No thought with this id!' });
+        }
+        return User.findOneAndUpdate(
+          { thoughts: req.params.thoughtId },
+          { $pull: { thoughts: req.params.thoughtId } },
+          { new: true }
+        );
       })
-      .then(() => res.json({ message: 'Thought and user deleted!' }))
-      .catch((err) => res.status(500).json(err));
-},
+      .then((dbUserData) => {
+        if (!dbUserData) {
+          return res.status(404).json({ message: 'Thought created but no user with this id!' });
+        }
+        res.json({ message: 'Thought successfully deleted!' });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
+       
+       
+        // .then(() => res.json({ message: 'Thought and user deleted!' }))
+
+//           ? res.status(404).json({ message: 'No thought with that ID' })
+//           : thoughts.deleteMany({ _id: { $in: thoughts.user }})
+//       })
+//       .then(() => res.json({ message: 'Thought and user deleted!' }))
+//       .catch((err) => res.status(500).json(err));
+// },
 
   // Add reaction
   addReaction(req, res) {
