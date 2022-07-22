@@ -48,11 +48,12 @@ module.exports = {
   
   // Delete a thought
   deleteThought(req, res) {
+    console.log("I am in deleteThought")
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
-      .then((thoughts) => {
-        if (!dbThoughtData) {
-          return res.status(404).json({ message: 'No thought with this id!' });
-        }
+      .then((dbThoughtData) => {
+        // if (!dbThoughtData) {
+        //   return res.status(404).json({ message: 'No thought with this id!' });
+        // }
         return User.findOneAndUpdate(
           { thoughts: req.params.thoughtId },
           { $pull: { thoughts: req.params.thoughtId } },
@@ -105,7 +106,7 @@ module.exports = {
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
-      { $pull: { reactions: { rectionId: req.params.reactionId } } },
+      { $pull: { reactions: { reactionId: req.params.reactionId } } },
       { runValidators: true, new: true }
     )
       .then((dbThoughtData) => {
