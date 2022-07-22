@@ -2,11 +2,7 @@
 const { ObjectId } = require('mongoose').Types;
 const { User, Thought } = require('../models');
 
-
-
     module.exports = {
-
-
   // Get all users
   getUsers(req, res) {
     User.find()
@@ -84,11 +80,11 @@ deleteFriend(req, res) {
     { runValidators: true, new: true }
   )
     .then((user) => {
-      // if(!user) {
-      // res.status(404).json({ message: 'No user found with that ID' })
-      // } else {
-      //  res.json(user)
-      })
+      if(!user) {
+      res.status(404).json({ message: 'No user found with that ID' })
+      } else {
+       res.json(user)
+}})
     .catch((err) => res.status(500).json(err));
 },
     };

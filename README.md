@@ -3,58 +3,39 @@
 
 # 18 NoSQL: Social Network API
 
-## Your Task
+## Description
 
 MongoDB is a popular choice for many social networks due to its speed with large amounts of data and flexibility with unstructured data. 
 This is an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. I use Express.js for routing, a MongoDB database, and the Mongoose ODM. 
 
+## Installation
+Clone the repo from GitHub, and install node.js on your computer, in the command line, run npm start.
 
 ## Mock Up
 
-The following animations show examples of the application's API routes being tested in Insomnia.
+The following images show examples of the application's API routes being tested in Insomnia.
 
-The following animation shows GET routes to return all users and all thoughts being tested in Insomnia:
+The following image shows GET route to get all users being tested in Insomnia:
 
-![Test1](./Assets/18-nosql-homework-demo-01.gif)
+![Test1](./images/get-all-users.jpeg)
 
-The following animation shows GET routes to return a single user and a single thought being tested in Insomnia:
+The following image shows DEL route to delete a single user being tested in Insomnia:
 
-![Test2](./Assets/18-nosql-homework-demo-02.gif)
+![Test2](./images/delete-user.jpeg)
 
-The following animation shows the POST, PUT, and DELETE routes for users being tested in Insomnia:
+The following image shows the POST route for creating a friend being tested in Insomnia:
 
-![Test3](./Assets/18-nosql-homework-demo-03.gif)
+![Test3](./images/post-a-friend.jpeg)
 
-In addition to this, your walkthrough video should show the POST, PUT, and DELETE routes for thoughts being tested in Insomnia.
+The following image shows the POST route for a thought being tested in Insomnia:
 
+![Test4](./images/post-a-thought.jpeg)
 
-In addition to this, your walkthrough video should show the POST and DELETE routes for reactions to thoughts being tested in Insomnia.
+The following image shows the PUT route for updating a thought being tested in Insomnia:
 
-## Getting Started
-
-Be sure to have MongoDB installed on your machine. Follow the [MongoDB installation guide on The Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/mongodb/how-to-install-mongodb) to install MongoDB locally.
-
+![Test5](./images/put-a-thought.jpeg)
 
 
-// example data
-{
-  "thoughtText": "Here's a cool thought...",
-  "username": "lernantino",
-  "userId": "5edff358a0fcb779aa7b118b"
-}
-```
+### Walkthrough Video:
 
-* `PUT` to update a thought by its `_id`
-
-* `DELETE` to remove a thought by its `_id`
-
----
-
-
-### Walkthrough Video: 37%
-
-* A walkthrough video that demonstrates the functionality of the social media API must be submitted, and a link to the video should be included in your README file.
-
- 
-
-
+Clicking [this link](https://drive.google.com/file/d/16_R4Ii1icnAS7S89n7bc7KvLNPI1JRhE/view) you will find the video with the demonstration of the app.
