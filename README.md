@@ -9,7 +9,7 @@ MongoDB is a popular choice for many social networks due to its speed with large
 This is an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. I use Express.js for routing, a MongoDB database, and the Mongoose ODM. 
 
 ## Installation
-Clone the repo from GitHub, and install node.js on your computer, in the command line, run npm start.
+Clone the repo from GitHub, and install node.js in the command line, run npm install and run npm start.
 
 ## Mock Up
 
@@ -38,4 +38,4 @@ The following image shows the PUT route for updating a thought being tested in I
 
 ### Walkthrough Video:
 
-Clicking [this link](https://drive.google.com/file/d/16_R4Ii1icnAS7S89n7bc7KvLNPI1JRhE/view) you will find the video with the demonstration of the app.
+Clicking [this link](https://drive.google.com/file/d/1HHyc9tUuZ_GorRTzHQSjA9aUB4XwfVrX/view?usp=sharing) you will find the video with the demonstration of the app.
